@@ -9,8 +9,7 @@ build:
       - script:
           name: build formula template
           code: |
-            export VERSION=XX
-            export SHA256=YY
+            mkdir -p Formula
             sh builder.sh > Formula/wercker-cli.rb
             ls -la
             cat Formula/wercker-cli.rb
