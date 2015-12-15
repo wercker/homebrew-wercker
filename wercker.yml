@@ -13,4 +13,8 @@ build:
             sh builder.sh > Formula/wercker-cli.rb
             ls -la
             cat Formula/wercker-cli.rb
+      - script:
+          name: git push
+          code: |
+            git push -f HEAD:master
 
