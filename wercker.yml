@@ -1,0 +1,17 @@
+box: yikaus/alpine-bash
+build:
+    steps:
+      - script:
+          name: show version and sha256
+          code: |
+            echo $VERSION
+            echo $SHA256
+      - script:
+          name: build formula template
+          code: |
+            export VERSION=XX
+            export SHA256=YY
+            sh builder.sh > Formula/wercker-cli.rb
+            ls -la
+            cat Formula/wercker-cli.rb
+
