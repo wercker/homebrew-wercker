@@ -1,6 +1,8 @@
-box: yikaus/alpine-bash
+box: debian
 build:
     steps:
+      - install-packages:
+            packages: openssh-client git
       - script:
           name: show version and sha256
           code: |
@@ -14,7 +16,26 @@ build:
             ls -la
             cat Formula/wercker-cli.rb
       - script:
-          name: git push
+          name: set git config
           code: |
-            git push -f HEAD:master
+            git config --list
+            git remote -v
+            git config --global push.default simple
+            #git remote set-url origin https://github.com/wercker/homebrew-wercker.git
+            git remote -v
+            git config --list
+            cat .git/config
+            #TODO add ssh key or finger print thing?
+      - add-to-known_hosts:
+            hostname: github.com
+            fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+            type: rsa
+      - add-ssh-key:
+            keyname: GITHUB
+      - script:
+          name: git steps
+          code: |
+            git add .
+            git commit -m '$VERSION'
+            git push -f origin HEAD:master
 
