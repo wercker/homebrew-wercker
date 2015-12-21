@@ -18,6 +18,8 @@ build:
       - script:
           name: set git config
           code: |
+            git config --global user.email "walter@wercker.com"
+            git config --global user.name "wercker build"
             git config --list
             git remote -v
             git config --global push.default simple
