@@ -31,6 +31,6 @@ build:
           name: git steps
           code: |
             git add .
-            git commit -m '$VERSION'
+            git commit -m "Release $VERSION"
             git push origin HEAD:master
 
