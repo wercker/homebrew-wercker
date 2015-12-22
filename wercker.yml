@@ -2,7 +2,7 @@ box: debian
 build:
     steps:
       - install-packages:
-            packages: openssh-client git
+            packages: git
       - script:
           name: show version and sha256
           code: |
