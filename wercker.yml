@@ -1,36 +1,48 @@
 box: debian
-build:
-    steps:
-      - install-packages:
-            packages: openssh-client git
-      - script:
-          name: show version and sha256
-          code: |
-            echo $VERSION
-            echo $SHA256
-      - script:
-          name: build formula template
-          code: |
-            mkdir -p Formula
-            sh builder.sh > Formula/wercker-cli.rb
-            ls -la
-            cat Formula/wercker-cli.rb
-      - script:
-          name: set git config
-          code: |
-            git config --global user.email "walter@wercker.com"
-            git config --global user.name "wercker build"
-            git config --global push.default simple
-      - add-to-known_hosts:
-            hostname: github.com
-            fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
-            type: rsa
-      - add-ssh-key:
-            keyname: GITHUB
-      - script:
-          name: git steps
-          code: |
-            git add .
-            git commit -m "Release $VERSION"
-            git push -f origin HEAD:master
+release:
+  steps:
+    - install-packages:
+        packages: openssh-client git
 
+    - script:
+        name: set new version
+        code: |
+          export UCHAN=$(echo "$CHANNEL" | awk '{print toupper($0)}')
+          echo "Channel: $CHANNEL, Version: $VERSION, sha256: $SHA256"
+          echo "Channel: $CHANNEL, Version: $VERSION, sha256: $SHA256" > $WERCKER_REPORT_MESSAGE_FILE
+          echo "$VERSION" > "${UCHAN}_VERSION"
+          echo "$SHA256" > "${UCHAN}_SHA256"
+
+    - script:
+        name: export version
+        code: |
+          export STABLE_VERSION=$(cat STABLE_VERSION)
+          export STABLE_SHA256=$(cat STABLE_SHA256)
+          export BETA_VERSION=$(cat BETA_VERSION)
+          export BETA_SHA256=$(cat BETA_SHA256)
+
+    - script:
+        name: build formula template
+        code: ./t.sh wercker-cli.template.rb > Formula/wercker-cli.rb
+
+    - script:
+        name: git config
+        code: |
+          git config --global user.email "walter@wercker.com"
+          git config --global user.name "walter"
+          git config --global push.default simple
+
+    - add-to-known_hosts:
+        hostname: github.com
+        fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+        type: rsa
+
+    - add-ssh-key:
+        keyname: GITHUB
+
+    - script:
+        name: git commit, push
+        code: |
+          git add .
+          git commit -m "Release $CHANNEL $VERSION"
+          git push -f origin "HEAD:$WERCKER_GIT_BRANCH"
