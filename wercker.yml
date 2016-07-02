@@ -28,7 +28,7 @@ release:
     - script:
         name: git config
         code: |
-          git config --global user.email "walter@wercker.com"
+          git config --global user.email "walterbot@wercker.com"
           git config --global user.name "walter"
           git config --global push.default simple
 
