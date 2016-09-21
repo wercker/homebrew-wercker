@@ -9,9 +9,9 @@ class WerckerCli < Formula
   version "1.0.560"
 
   devel do
-    url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.547-beta/darwin_amd64/wercker"
-    sha256 "bdbb222abae5cb12d1eca3996b46aa728c4e58a38fd4c9095152ef5ae6a4b31e"
-    version "1.0.547-beta"
+    url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.629-beta/darwin_amd64/wercker"
+    sha256 "be63bf8f7358006a69669e7c87cc587f5c5d6d662affc2528258f2f96a632aa3"
+    version "1.0.629-beta"
   end
 
   def install
