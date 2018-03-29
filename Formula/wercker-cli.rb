@@ -15,6 +15,6 @@ class WerckerCli < Formula
   end
 
   def install
-    bin.install Dir["*"]
+    bin.install Dir["wercker"]
   end
 end
