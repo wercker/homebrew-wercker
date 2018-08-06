@@ -5,7 +5,7 @@ class WerckerCli < Formula
   homepage "http://wercker.com"
 
   url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.1313/darwin_amd64/wercker"
-  sha256 "e14c40b58db7c8adb3a5699ade1a142fa93cbdc1b94c1c2d515bc6d707ced47e"
+  sha256 "3b9f53ee390b3e4d0e27497c7adc22635e0df41e79190faf30d8fbd52cf7536d"
   version "1.0.1313"
 
   devel do
