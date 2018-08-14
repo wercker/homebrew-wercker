@@ -4,9 +4,9 @@ class WerckerCli < Formula
   desc "wercker command line interface for building and running containers"
   homepage "http://wercker.com"
 
-  url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.1316/darwin_amd64/wercker"
-  sha256 "77fa098ef7c7bdbcc94af72064692e3f81f495ef74ef62ee3b645df7bc477f49"
-  version "1.0.1316"
+  url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.1321/darwin_amd64/wercker"
+  sha256 "8b6a5c7d8967bd188268916e620cb956859717f833981783cc6fbaa57f56011c"
+  version "1.0.1321"
 
   devel do
     url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.630-beta/darwin_amd64/wercker"
