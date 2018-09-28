@@ -16,5 +16,9 @@ class WerckerCli < Formula
 
   def install
     bin.install Dir["*"]
+    file = "#{prefix}/bin/downloads.wercker.com"
+    if File.file?(file) 
+      File.rename(file, "#{prefix}/bin/wercker")
+    end
   end
 end
