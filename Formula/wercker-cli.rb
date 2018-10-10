@@ -1,20 +1,18 @@
-require "formula"
-
 class WerckerCli < Formula
-  desc "wercker command line interface for building and running containers"
+  desc "Wercker command-line interface for building and running containers"
   homepage "http://wercker.com"
 
-  url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.1359/darwin_amd64/wercker"
-  sha256 "a4e680e8d47b367c8af9af52248ccf20b1abd953a8ebc3312897d8e96553d70d"
-  version "1.0.1359"
+  url "http://downloads.wercker.com/cli/versions/1.0.1378/darwin_amd64/wercker", :using => :nounzip
+  sha256 "96d3b399340b8811cefb26885c7fdf842ea300cd4ad773024a108df7c5458f59"
 
-  devel do
-    url "https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.630-beta/darwin_amd64/wercker"
-    sha256 "63b37ac62da0fb7625dcc24fab9430b2d867e38c26da9c9699514e1696d36136"
-    version "1.0.630-beta"
-  end
+  # Version information for quick reference
+  # version "1.0.1378"
 
   def install
-    bin.install Dir["*"]
+    bin.install "wercker"
+  end
+
+  test do
+    system "#{bin}/wercker version"
   end
 end
