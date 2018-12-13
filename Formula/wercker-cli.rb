@@ -2,11 +2,11 @@ class WerckerCli < Formula
   desc "Wercker command-line interface for building and running containers"
   homepage "http://wercker.com"
 
-  url "http://downloads.wercker.com/cli/versions/1.0.1436/darwin_amd64/wercker", :using => :nounzip
-  sha256 "a12a12ac0ad9748a1fe601037d6f8802eceabf612e87a27f19111aff4d04444d"
+  url "http://downloads.wercker.com/cli/versions/1.0.1442/darwin_amd64/wercker", :using => :nounzip
+  sha256 "cc5ef1efa4d02ca525e38c196fb2b2f1bef3a6158c6ef0dd269fbbaa8ff2fc9f"
 
   # Version information for quick reference
-  # version "1.0.1436"
+  # version "1.0.1442"
 
   def install
     bin.install "wercker"
